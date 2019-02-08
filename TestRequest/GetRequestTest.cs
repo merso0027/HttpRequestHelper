@@ -31,7 +31,7 @@ namespace TestRequest
         }
 
         [Fact]
-        public async Task Get_OneString_Success()
+        public async Task Get_OneWithTwoParameters_Success()
         {
             int firstParam = 1;
             int secondParam = 2;
