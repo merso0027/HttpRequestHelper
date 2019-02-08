@@ -22,7 +22,7 @@ namespace HttpRequestHelper
         /// <param name="url">Url to post API</param>
         /// <param name="contentValue">Post content as string</param>
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
-        public static async Task Post<T>(string url, T contentValue, string mediaType = MediaTypeNames.Application.Json)
+        public static async Task<bool> Post<T>(string url, T contentValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
             {
@@ -30,6 +30,7 @@ namespace HttpRequestHelper
                 var content = new StringContent(JsonConvert.SerializeObject(contentValue), Encoding.UTF8, mediaType);
                 var result = await client.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
+                return true;
             }
         }
 
@@ -39,7 +40,7 @@ namespace HttpRequestHelper
         /// <param name="url">Url to put API</param>
         /// <param name="contentValue">Put content as string</param>
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
-        public static async Task Put<T>(string url, T stringValue, string mediaType = MediaTypeNames.Application.Json)
+        public static async Task<bool> Put<T>(string url, T stringValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
             {
@@ -47,6 +48,7 @@ namespace HttpRequestHelper
                 var content = new StringContent(JsonConvert.SerializeObject(stringValue), Encoding.UTF8, mediaType);
                 var result = await client.PutAsync(url, content);
                 result.EnsureSuccessStatusCode();
+                return true;
             }
         }
 
@@ -56,7 +58,7 @@ namespace HttpRequestHelper
         /// <typeparam name="T">Return type</typeparam>
         /// <param name="url">Get api url</param>
         /// <returns>Deserialized result from json in type T</returns>
-        public static async Task<T> Get<T>(string url)
+        public static async Task<T> Get<T>(string url)// where T : class
         {
             using (var client = new HttpClient())
             {
@@ -73,13 +75,14 @@ namespace HttpRequestHelper
         /// Delete http helper method
         /// </summary>
         /// <param name="url">Url to delete api</param>
-        public static async Task Delete(string url)
+        public static async Task<bool> Delete(string url)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = baseAddress;
                 var result = await client.DeleteAsync(url);
                 result.EnsureSuccessStatusCode();
+                return true;
             }
         }
     }
