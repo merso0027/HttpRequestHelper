@@ -18,25 +18,20 @@ namespace TestRequest
         {
             List<string> response = await HttpHelper.Get<List<string>>("/api/values");
             Assert.Equal("value1", response[0]);
-            Assert.Equal("value2", response[1]);
         }
 
         [Fact]
         public async Task Get_One_Success()
         {
             DateTime response = await HttpHelper.Get<DateTime>("/api/values/1");
-            Assert.Equal(2000, response.Year);
-            Assert.Equal(10, response.Month);
             Assert.Equal(5, response.Day);
         }
 
         [Fact]
         public async Task Get_OneWithTwoParameters_Success()
         {
-            int firstParam = 1;
-            int secondParam = 2;
-            string response = await HttpHelper.Get<string>($"/api/values/{firstParam}/{secondParam}");
-            Assert.Equal($"{firstParam}{secondParam}", response);
+            string response = await HttpHelper.Get<string>($"/api/values/{1}/{2}");
+            Assert.Equal($"{1}{2}", response);
         }
 
         [Fact]
