@@ -22,6 +22,7 @@ namespace HttpRequestHelper
         /// <param name="url">Url to post API</param>
         /// <param name="contentValue">Post content as string</param>
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
+        /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
         public static async Task<bool> Post<T>(string url, T contentValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
@@ -40,6 +41,8 @@ namespace HttpRequestHelper
         /// <param name="url">Url to put API</param>
         /// <param name="contentValue">Put content as string</param>
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
+        /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
+
         public static async Task<bool> Put<T>(string url, T stringValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
@@ -75,6 +78,7 @@ namespace HttpRequestHelper
         /// Delete http helper method
         /// </summary>
         /// <param name="url">Url to delete api</param>
+        /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
         public static async Task<bool> Delete(string url)
         {
             using (var client = new HttpClient())
