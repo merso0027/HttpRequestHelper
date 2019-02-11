@@ -23,7 +23,7 @@ namespace HttpRequestHelper
         /// <param name="contentValue">Post content as string</param>
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
         /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
-        public static async Task<bool> Post<T>(string url, T contentValue, string mediaType = MediaTypeNames.Application.Json)
+        public static async Task Post<T>(string url, T contentValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
             {
@@ -31,7 +31,6 @@ namespace HttpRequestHelper
                 var content = new StringContent(JsonConvert.SerializeObject(contentValue), Encoding.UTF8, mediaType);
                 var result = await client.PostAsync(url, content);
                 result.EnsureSuccessStatusCode();
-                return true;
             }
         }
 
@@ -43,7 +42,7 @@ namespace HttpRequestHelper
         /// <param name="mediaType">Media type - default value is 'application/json'</param>
         /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
 
-        public static async Task<bool> Put<T>(string url, T stringValue, string mediaType = MediaTypeNames.Application.Json)
+        public static async Task Put<T>(string url, T stringValue, string mediaType = MediaTypeNames.Application.Json)
         {
             using (var client = new HttpClient())
             {
@@ -51,7 +50,6 @@ namespace HttpRequestHelper
                 var content = new StringContent(JsonConvert.SerializeObject(stringValue), Encoding.UTF8, mediaType);
                 var result = await client.PutAsync(url, content);
                 result.EnsureSuccessStatusCode();
-                return true;
             }
         }
 
@@ -79,14 +77,13 @@ namespace HttpRequestHelper
         /// </summary>
         /// <param name="url">Url to delete api</param>
         /// <returns>Return true if result is ok, else throws System.Net.Http.HttpRequestException</returns>
-        public static async Task<bool> Delete(string url)
+        public static async Task Delete(string url)
         {
             using (var client = new HttpClient())
             {
                 client.BaseAddress = baseAddress;
                 var result = await client.DeleteAsync(url);
                 result.EnsureSuccessStatusCode();
-                return true;
             }
         }
     }

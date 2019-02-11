@@ -6,13 +6,16 @@ using Xunit;
 
 namespace TestRequest
 {
-    public class GetRequestTest
+    public class BasicCrudRequestTest
     {
-        public GetRequestTest()
+        public BasicCrudRequestTest()
         {
             HttpHelper.BaseApiAddress("https://testapiforhelper.azurewebsites.net/");
         }
 
+        /// <summary>
+        ///  Check if Get return expected values from API
+        /// </summary>
         [Fact]
         public async Task Get_Collecton_Success()
         {
@@ -20,6 +23,9 @@ namespace TestRequest
             Assert.Equal("value1", response[0]);
         }
 
+        /// <summary>
+        ///  Check if Get return expected values from API
+        /// </summary>
         [Fact]
         public async Task Get_One_Success()
         {
@@ -27,6 +33,9 @@ namespace TestRequest
             Assert.Equal(5, response.Day);
         }
 
+        /// <summary>
+        ///  Check if Get return expected values from API
+        /// </summary>
         [Fact]
         public async Task Get_OneWithTwoParameters_Success()
         {
@@ -34,25 +43,34 @@ namespace TestRequest
             Assert.Equal($"{1}{2}", response);
         }
 
+        /// <summary>
+        ///  test if a method does not throw exeption.
+        ///  Exception HttpRequestException is thrown if response is not success.
+        /// </summary>
         [Fact]
         public async Task Post_Success()
         {
-            var response = await HttpHelper.Post<string>("/api/values", "test");
-            Assert.True(response);
+            await HttpHelper.Post<string>("/api/values", "test");
         }
 
+        /// <summary>
+        ///  test if a method does not throw exeption.
+        ///  Exception HttpRequestException is thrown if response is not success.
+        /// </summary>
         [Fact]
         public async Task Put_Success()
         {
-            var response = await HttpHelper.Put<string>("/api/values", "test");
-            Assert.True(response);
+            await HttpHelper.Put<string>("/api/values", "test");
         }
 
+        /// <summary>
+        ///  test if a method does not throw exeption.
+        ///  Exception HttpRequestException is thrown if response is not success.
+        /// </summary>
         [Fact]
         public async Task Delete_Success()
         {
-            var response = await HttpHelper.Delete("/api/values/3");
-            Assert.True(response);
+            await HttpHelper.Delete("/api/values/3");
         }
     }
 }
