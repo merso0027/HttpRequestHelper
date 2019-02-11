@@ -44,7 +44,7 @@ namespace TestRequest
         }
 
         /// <summary>
-        ///  test if a method does not throw exeption.
+        ///  Test if post method does not throw exeption.
         ///  Exception HttpRequestException is thrown if response is not success.
         /// </summary>
         [Fact]
@@ -54,7 +54,7 @@ namespace TestRequest
         }
 
         /// <summary>
-        ///  test if a method does not throw exeption.
+        ///  Test if put method does not throw exeption.
         ///  Exception HttpRequestException is thrown if response is not success.
         /// </summary>
         [Fact]
@@ -64,7 +64,7 @@ namespace TestRequest
         }
 
         /// <summary>
-        ///  test if a method does not throw exeption.
+        ///  Test if delete method does not throw exeption.
         ///  Exception HttpRequestException is thrown if response is not success.
         /// </summary>
         [Fact]
