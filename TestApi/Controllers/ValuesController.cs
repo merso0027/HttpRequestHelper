@@ -35,21 +35,21 @@ namespace TestApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] string value)
         {
-            return Ok(true);
+            return Ok();
         }
 
         // PUT api/values/5
         [HttpPut]
         public IActionResult Put([FromBody] string value)
         {
-            return Ok(true);
+            return Ok();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok(true);
+            return Ok();
         }
     }
 }
