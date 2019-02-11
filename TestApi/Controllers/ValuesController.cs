@@ -24,11 +24,11 @@ namespace TestApi.Controllers
             return Ok(new DateTime(2000, 10, 5));
         }
 
-        // GET api/values/5
-        [HttpGet("{id}/{v}")]
-        public IActionResult Get(int id,int v)
+        // GET api/values/5/6
+        [HttpGet("{id}/{key}")]
+        public IActionResult Get(int id,int key)
         {
-            return Ok($"{id}{v}");
+            return Ok($"{id}{key}");
         }
 
         // POST api/values
